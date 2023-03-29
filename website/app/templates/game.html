@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{%static 'app.css'%}" />
+<link rel="stylesheet" href="{%static 'game.css'%}" />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    <link href='https://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Nova Mono' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Gugi' rel='stylesheet'>
+    <title>Quiz generator - Game</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="game" class="justify-center flex-column">
+        <div id="hud">
+          {# TIMER #}
+          <div id="hud-item">
+            <div class = "timer">
+              <div class="base-timer">
+                <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <g class="base-timer__circle">
+                    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                    <path
+                      id="base-timer-path-remaining"
+                      stroke-dasharray="283"
+                      class="base-timer__path-remaining ${remainingPathColor}"
+                      d="
+                        M 50, 50
+                        m -45, 0
+                        a 45,45 0 1,0 90,0
+                        a 45,45 0 1,0 -90,0
+                      "
+                    ></path>
+                  </g>
+                </svg>
+                <span id="base-timer-label" class="base-timer__label"></span>
+              </div>
+              </div>
+          </div>
+          <div id="hud-item">
+            <div class="hud-score">
+              <p class="hud-score-text-percent" id="hud-score-text-percent" title="Score[%]">0.0%</p>
+              <p class="hud-score-text-points" id="hud-score-text-points" title="Score points = Score[%] &sdot; &#8730;Questions &sdot; &#8730;Answers">0</p>
+            </div> 
+          </div>
+        </div>
+        <p id="progressText" class="progress-text"></p>
+        <div id="progressBar">
+          <div id="progressBarFull"></div>
+        </div>
+        <p class ="question-container" id="question"></p>
+        <div id="QA-container">
+        </div>
+      </div>
+      <div class="popup"> 
+        {% csrf_token %}
+        <div class="popup-content" id="popup-content">
+          <div class="popup-head" id="popup-head"></div>
+          <div class="popup-msg" id="popup-msg"></div>
+          <input class="popup-input" type="text" id="nickname" placeholder = "Nickname">
+          <h6 class="popup-valid-msg" id="popup-valid-msg">&#160</h6> {# there's a space before inserting message #}
+          <input class="popup-btn" type="submit" onclick="savePlayerHigh()" value="Save">
+          <a class="popup-back" href="{{ qs.id }}">Retry</a><br>
+          <a class="popup-back" href="\">Homepage</a><br>
+        </div>
+      </div>
+    </div>
+  <script src="{%static 'game.js'%}" defer></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  {{ questions|json_script:"passQuestions" }}
+  {{ answers|json_script:"passAnswers" }}
+  {{ corrects|json_script:"passCorrects" }}
+  {{ quizID|json_script:"passID" }}
+  {{ timer|json_script:"passTimer" }}
+  {{ nq|json_script:"passNq" }}
+  {{ na|json_script:"passNa" }}
+  </body>
+</html>

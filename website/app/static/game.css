@@ -1,0 +1,292 @@
+h6 {
+  font-size: 1.8rem;
+  color: #000000;
+  font-weight: 300;
+}
+
+.question-container {
+  font-size: 4rem;
+  border: 0.2rem solid #56a5eb;
+  border-radius: 0.2rem;
+  display: flex;
+  margin-top: 4rem;
+  margin-bottom: 1.2rem;
+  width: auto;
+  background-color: rgba(150, 150, 150, 0.25);
+  padding: 1.8rem 2.2rem;
+  box-shadow: 0 0.8rem 0.8rem rgba(59, 167, 230, 0.25);
+}
+
+.choice-container {
+  width: 100%;
+  display: table; /*the only way i found to make prefixes inherit the height of container*/
+  /*vertical-align: middle;*/
+  /*align-items: center;*/
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  padding: 0rem 0rem;
+  border-radius: 0.2rem;
+  background-color: rgba(150, 150, 150, 0.4);
+  box-shadow: 0 0.3rem 0.5rem rgba(59, 167, 230, 0.15);
+}
+
+.choice-container:hover {
+  cursor: pointer;
+  background-color: rgba(33, 187, 239, 0.4);
+  box-shadow: 0 0.4rem 1.1rem 0 rgba(33, 187, 239, 0.6);
+  /*transform: translateX(0.1rem);*/
+  transition: box-shadow 50ms;
+  transition: background-color 1000ms;
+}
+
+.choice-prefix {
+  display: table-cell; /*to inherit the height*/
+  width: 8rem;
+  min-width: 8rem;
+  max-width: 8rem;
+  text-align: center; /*horizontal*/
+  vertical-align: middle;
+  border-radius: 0.2rem;
+  background-color: rgba(59, 167, 230, 0.75);
+  color: rgb(255, 255, 255);
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 4.6rem;
+  font-weight: 600
+}
+
+.choice-text {
+  padding: 0.6rem 2.4rem;
+  width: auto;
+  font-size: 2.8rem;
+  align-items: center;
+}
+
+#hud {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hud-score {
+  text-align: center;
+}
+
+.hud-score-text-percent {
+  margin-top: 2.3rem;
+  margin-bottom: 0rem;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.hud-score-text-points {
+  font-family: 'Gugi';
+  padding: 0;
+  margin-top: -1rem;
+  font-size: 10rem;
+  color: #b8d0e4cf;
+}
+
+.progress-text {
+  font-family: 'Gugi';
+  margin-top: -8rem;
+  margin-bottom: 0.1rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+#progressBar {
+  /*width: 20rem;*/
+  height: 2rem;
+  border: 0.3rem solid #ea5252;
+  border-radius: 0.8rem;
+  background-color: rgba(33, 187, 239, 0.2);
+}
+
+#progressBarFull {
+  height: 2rem;
+  background-color:  rgba(59, 167, 230, 0.75);
+  /*background-color: rgba(33, 187, 239, 0.8);*/
+  box-shadow: 0 1rem 0.5rem 0 rgba(59, 167, 230, 0.15);
+  /*width: 0%;*/
+  transition: 1500ms;
+  border-radius: 0.4rem;
+}
+
+/*POPUP*/
+
+.popup{
+  display: none;
+  /*display: flex;*/
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.4);
+  width: 150%;
+  height: 150%;
+
+}
+
+.popup-content{
+  /*height: 52rem;*/
+  width: 48rem;
+  /*display: inline-block;*/
+  background: linear-gradient(90deg, rgb(224, 22, 63), rgb(205, 101, 92));
+  padding: 4rem;
+  border-radius: 1rem;
+  /*border: 0.4rem solid rgba(242, 188, 11, 0.3);*/
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 0.1rem 1rem 0 rgba(242, 188, 11, 0.3);
+}
+
+.popup-head{
+  font-family: 'Gugi';
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.popup-msg{
+  /*font-family: 'Gugi';*/
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.popup-valid-msg{
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: rgb(42, 42, 42);
+  /*font-style: italic;*/
+}
+
+.popup-input{
+  outline: none; /*removing blue line*/
+  margin-top: 2rem;
+  margin-bottom: -2rem;
+  width: 30rem;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  border: 0.3rem solid rgba(242, 188, 11, 0.4);
+  border-radius:0.25rem;
+  box-shadow: 0 0.1rem 1.4rem 0 rgba(235, 213, 86, 0.5);
+}
+
+.popup-btn{
+  font-family: 'Gugi';
+  outline: none; /*removing blue line*/
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-radius:0.25rem;
+  font-size: 2.2rem;
+  font-weight: 900;
+  padding: 1rem 0;
+  min-width: 25rem;
+  text-align: center;
+  border: 0.3rem solid rgba(242, 188, 11, 0.4);
+  text-decoration: none;
+  color: rgba(242, 188, 11, 0.7);
+  background-color: rgba(33, 187, 239, 0.05);
+}
+
+.popup-btn:hover {
+  cursor: pointer;
+  background-color: rgba(242, 188, 11, 0.35);
+  box-shadow: 0 0.4rem 2.2rem 0 rgba(242, 188, 11, 0.4);
+  transition: box-shadow 5000ms;
+  transition: background-color 2000ms;
+}
+
+.popup-back{
+  font-family: 'Gugi';
+  color: var(--colGray100);
+  display: inline-block;/*prevent collapsing margins*/
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius:0.25rem;
+  border: 0.1rem solid rgba(33, 187, 239, 0.4);
+  font-size: 2.2rem;
+  font-weight: 900;
+  padding: 1rem 0;
+  min-width: 25rem;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgba(33, 187, 239, 0.1);
+}
+
+.popup-back:hover {
+  cursor: pointer;
+  background-color: rgba(33, 187, 239, 0.5);
+  box-shadow: 0 0.4rem 1.1rem 0 rgba(33, 187, 239, 0.5);
+  transition: box-shadow 50ms;
+  transition: background-color 2000ms;
+}
+
+.popup-close{
+  color: var(--colGray100);
+  display: inline-block;/*prevent collapsing margins*/
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius:0.25rem;
+  border: 0.1rem solid rgba(33, 187, 239, 0.4);
+  font-size: 2.2rem;
+  font-weight: 900;
+  padding: 1rem 0;
+  min-width: 25rem;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgba(33, 187, 239, 0.1);
+}
+
+input::placeholder {
+  color: #bebbbb;
+}
+
+/* TIMER */
+
+.timer{
+  /*display: flex;*/
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.base-timer {
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: 18rem;
+  height: 18rem;
+}
+
+.base-timer__svg {
+  transform: scaleX(-1);
+}
+
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 1.2rem;
+  stroke: rgba(150, 150, 150, 0.4);
+}
+
+.base-timer__path-remaining {
+  stroke-width: 1.2rem;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 110ms linear all;
+  fill-rule: nonzero;
+  stroke: rgba(59, 167, 230, 0.8);
+}
+
+.base-timer__label {
+  /*font-family: 'Courier New', monospace;*/
+  /*font-family: 'Overpass Mono';*/
+  font-family: 'Nova Mono';
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+}

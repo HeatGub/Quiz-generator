@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{%static 'app.css'%}" />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {#<meta name="viewport" content="width=device-width, initial-scale=1.0" />#}
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=0.4" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    <link href='https://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Gugi' rel='stylesheet'>
+    <title>Quiz generator -Highscores</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="home" class="flex-center flex-column">
+        <h1>Highscores</h1>
+          <table class ="hightable">
+            <thead>
+              <tr>
+                <th >Ranking</th> 
+                <th title="The topic of the quiz. Could be anything...">Topic</th>
+                <th title="Time limit for each and every question.">Timer</th>
+                <th title="Temper is so called 'temperature' GPT hyperparameter rescaled to range 0-100. Higher temper value makes GPT answers more random.">Temper</th> 
+                <th title="Amount of questions in the quiz.">Questions</th>
+                <th title="Answers to ane question.">Answers</th> 
+                <th title="% of answers which GPT marked as correct.">Score [%]</th> 
+                <th title="Score points = Score[%] &sdot; &#8730;Questions &sdot; &#8730;Answers">Score points</th> 
+                <th title="Highscore by:">Player</th>
+                <th title="Take the quiz and an opportunity to reach a new highscore (if Highscore[%]<100%).">Play</th> 
+              </tr>
+            </thead>
+            </tbody>
+              {% for qs in object_list %}
+                <tr>
+                  <td>{{ forloop.counter0|add:page_obj.start_index }}</td> {# forloop.counter0 would do new indexing for every page#}
+                  <td>{{ qs.topic }}</td>
+                  <td>{{ qs.timer }}<font size="-0.5rem">s</font></td>
+                  <td>{{ qs.temper }}</td>
+                  <td>{{ qs.questions_amount }}</td>
+                  <td>{{ qs.answers_mode }} </td>
+                  <td>{{ qs.highscore_percent }}<font size="-0.5rem">%</font></td>
+                  <td>{{ qs.highscore }}</td>
+                  {#<td style="font-family: Arial; font-size:1.6rem">{{ qs.by_player }} </td>#}
+                  <td>{{ qs.by_player }} </td>
+                  {#<td> <a class="btn-play" href="game/{{ qs.id }}">&#x25BA;</a> </td>#}
+                  <td> <a class="btn-play" style="font-family: Gugi;" href="game/{{ qs.id }}">go</a> </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        <br></br>
+        <h3>      
+          <div class="pagination"> 
+              <span>
+                  {% if page_obj.has_previous %}
+                      <a class="btnpg" href="?page=1">&lt;&lt;&lt;</a>
+                      <a class="btnpg" href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+                  {% endif %}
+                  <span>
+                      {# Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}. #}
+                      <a class="pgnum" >{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}</a>
+                  </span>
+
+                  {% if page_obj.has_next %}
+                      <a class="btnpg" href="?page={{ page_obj.next_page_number }}">&gt;</a>
+                      <a class="btnpg" href="?page={{ page_obj.paginator.num_pages }}">&gt;&gt;&gt;</a>
+                  {% endif %}
+              </span>
+          </div>
+        </h3>
+        <br>
+        <a class="btn" href="\">Homepage</a>
+      </div>
+    </div>
+  </body>
+</html>

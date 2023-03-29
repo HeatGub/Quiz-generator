@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{%static 'app.css'%}" />
+<link rel="stylesheet" href="{%static 'game.css'%}" />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    <link href='https://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Gugi' rel='stylesheet'>
+    <title>Quiz generator - Generate a quiz</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="home" class="flex-center flex-column">
+        <div class="popup">
+          <div class="popup-content" id="popup-content">
+            <div class="popup-head" id="popup-head">Generating a quiz</div>
+            <div class="popup-msg" id="popup-msg">If it's long this may take up to about a minute. Generating time also depends on topic difficulty and GPT servers load.</div>
+            <div class="loading-center">
+              <div class="loading-ring"></div>
+              <span style="font-family: Gugi;">waiting for response...</span>
+            </div>
+            <div class="popup-msg" id="popup-msg">You will be redirected from this url<br>when everything is ready.</div>
+            <a class="popup-back" onclick="closePopup()">Close this popup</a>
+          </div>
+        </div>
+        <h1>Generate a Quiz</h1>
+        <h5>
+        <form method = "POST" action ="{% url 'generate' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form }}
+          <p style="margin-top:0rem;"></p>
+          <input type="submit" class="btn" value="Generate" id="form-submit" onclick="clientFormValidation()">
+        </form>
+        </h5>
+        <p style="margin-bottom:6rem;"></p>
+        <a class="btn" href="\">Homepage</a>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function clientFormValidation() {
+        const topic = document.getElementById('id_topic').value;
+        const nq = Number(document.getElementById('id_nquestions').value);
+        const na = Number(document.getElementById('id_nanswers').value);
+        const timer = Number(document.getElementById('id_timer').value);
+        const temper = Number(document.getElementById('id_temper').value);
+        if (topic.length <= 20 && topic.length >0 &&
+          Number.isInteger(nq) && nq>=1 && nq<=20 &&
+          Number.isInteger(na) && na>=2 && na<=10 &&
+          Number.isInteger(timer) && timer>=1 && timer<=99 &&
+          Number.isInteger(temper) && timer>=0 && timer<=100)
+          {
+          document.getElementById("popup-content").style.border = "0.4rem solid rgba(33, 187, 239, 0.3)";
+          document.querySelector(".popup").style.display = "flex";
+          setTimeout(disableSubmit, 50); /*without delay form cannot be submitted*/
+          }
+      };
+
+      function closePopup() {
+          document.querySelector(".popup").style.display = "none";
+      };
+
+      function disableSubmit() {
+        document.getElementById("form-submit").disabled = "true";
+      };
+    </script>
+  </body>
+</html>
