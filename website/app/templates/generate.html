@@ -17,13 +17,13 @@
       <div id="home" class="flex-center flex-column">
         <div class="popup">
           <div class="popup-content" id="popup-content">
-            <div class="popup-head" id="popup-head">Generating a quiz</div>
-            <div class="popup-msg" id="popup-msg">If it's long this may take up to about a minute. Generating time also depends on topic difficulty and GPT servers load.</div>
+            <div class="popup-head" id="popup-head">Generating...</div>
+            <div class="popup-msg" id="popup-msg">If a quiz is long this may take up to about a minute. Generating time also depends on topic difficulty and GPT servers load.</div>
             <div class="loading-center">
               <div class="loading-ring"></div>
-              <span style="font-family: Gugi;">waiting for response...</span>
+              <div class="loading-text" >spinning...</div>
             </div>
-            <div class="popup-msg" id="popup-msg">You will be redirected from this url<br>when everything is ready.</div>
+            <div class="popup-msg" id="popup-msg">You will be redirected from this URL<br>when everything is ready.</div>
             <a class="popup-back" onclick="closePopup()">Close this popup</a>
           </div>
         </div>
@@ -47,7 +47,7 @@
         const na = Number(document.getElementById('id_nanswers').value);
         const timer = Number(document.getElementById('id_timer').value);
         const temper = Number(document.getElementById('id_temper').value);
-        if (topic.length <= 20 && topic.length >0 &&
+        if (topic.length <= 20 && topic.length >0 && // >=0  ->  >0
           Number.isInteger(nq) && nq>=1 && nq<=20 &&
           Number.isInteger(na) && na>=2 && na<=10 &&
           Number.isInteger(timer) && timer>=1 && timer<=99 &&

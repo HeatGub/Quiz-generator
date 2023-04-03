@@ -295,10 +295,10 @@ label {
   width: 25rem;
   height: 25rem;
   border-radius: 50%;
-  animation: ring 3s linear infinite;
+  animation: ringAnimation 3s linear infinite;
 }
 
-@keyframes ring {
+@keyframes ringAnimation {
   0%{
     transform: rotate(0deg);
     box-shadow: 2px 2px 2px #e6bc00;
@@ -328,15 +328,23 @@ label {
   box-shadow: 0 0 1rem rgba(33, 187, 239, 0.2);
 }
 
-span{ /*loading text*/
-  font-size: 2rem;
-  color: rgb(42, 42, 42);
-  animation: text 3s ease-in-out linear infinite; /* remove this? */
+.loading-text { /*waiting for response...*/
+  font-size: 2.5rem;
+  font-family: Gugi;
+  animation: textAnimation 6s linear infinite;
 }
 
-@keyframes text {
+@keyframes textAnimation {
+  0%{
+    color:rgba(42, 42, 42, 0);
+  }
+
   50%{
-    color:rgb(33, 187, 239)
+    color:rgba(42, 42, 42, 0.9);
+  }
+
+  100%{
+    color:rgba(42, 42, 42, 0);
   }
 }
 
