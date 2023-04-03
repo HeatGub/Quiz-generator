@@ -267,7 +267,7 @@ input::placeholder {
 
 .base-timer__path-elapsed {
   stroke-width: 1.2rem;
-  stroke: rgba(150, 150, 150, 0.4);
+  stroke: rgba(150, 150, 150, 0.05);
 }
 
 .base-timer__path-remaining {
@@ -277,7 +277,7 @@ input::placeholder {
   transform-origin: center;
   transition: 110ms linear all;
   fill-rule: nonzero;
-  stroke: rgba(59, 167, 230, 0.8);
+  /*stroke: rgba(59, 167, 230, 0.8);*/
 }
 
 .base-timer__label {

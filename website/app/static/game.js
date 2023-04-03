@@ -41,7 +41,8 @@ const passHighUrl = "/pass_high/"+passID.toString();
 
 
 function redirectToHigh() {
-  window.location.href = 'https://quizgenerator.pythonanywhere.com/highscores';
+  /*window.location.href = 'https://quizgenerator.pythonanywhere.com/highscores';*/
+  window.location.href = 'http://localhost:8000/highscores';
 }
 
 function timeoutStart(time) {
@@ -236,6 +237,7 @@ function formatTime(time) {
 
 function calculateTimeFraction() {
   const rawTimeFraction = timeLeft / TIME_LIMIT;
+  document.getElementById("base-timer-path-remaining").style.stroke = "rgba(59, 167, 230," + (1-rawTimeFraction*0.9).toString(); //remaining timer's color
   return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
 }
 

@@ -9,18 +9,15 @@
   --colGold100: rgba(242, 188, 11, 1);
   --colGold050: rgba(242, 188, 11, 0.5);
 }
+
 /*make background stretched, not repeating (mobile devices problem)*/
-html {
-  /*height: 100%;*/
-}
 body {
-  /*height: 100%;*/
-  background: linear-gradient(90deg, rgb(217, 13, 64), rgb(203, 98, 82), rgb(94, 11, 94));
+  /*background: linear-gradient(90deg, rgb(217, 13, 64), rgb(203, 98, 82), rgb(94, 11, 94));*/
+  background: linear-gradient(90deg, rgb(204, 15, 62), rgb(203, 98, 82), rgb(94, 11, 94));
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-/*make background stretched - end*/
 
 .container {
   /*width: 100vw;*/

@@ -5,19 +5,23 @@ from app.secret_file import SECRET_KEY, ADMINS, EMAIL_HOST, EMAIL_HOST_USER, EMA
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#check --deploy
 SECURE_HSTS_SECONDS = 31536000 #1 year
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#HTTPs settings
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False #when DEBUG=True comment above HTTPs settings and access by http://...
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['quizgenerator.pythonanywhere.com']
+########## REMOTE HOSTING - comment for development only!
+# #HTTPs settings - comment below to develop
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
+# DEBUG = False
+# ALLOWED_HOSTS = ['quizgenerator.pythonanywhere.com']
+
+########## DEVELOPMENT - uncomment for development only!
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
+DEBUG = True #when DEBUG=True comment above HTTPs settings and access by http://...
 
 SECRET_KEY = SECRET_KEY
 ADMINS = ADMINS
