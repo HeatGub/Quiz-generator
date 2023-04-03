@@ -41,7 +41,7 @@ const passHighUrl = "/pass_high/"+passID.toString();
 
 
 function redirectToHigh() {
-  window.location.href = 'http://localhost:8000/highscores';
+  window.location.href = 'https://quizgenerator.pythonanywhere.com/highscores';
 }
 
 function timeoutStart(time) {
@@ -53,7 +53,7 @@ function timeoutClear() {
 }
 
 function savePlayerHigh() {
-    var currentHigh = $.ajax({ type: "GET",   
+    var currentHigh = $.ajax({ type: "GET",
                         url: passHighUrl,
                         async: true, /*false works as well*/
                       }).responseText;
@@ -73,9 +73,9 @@ function savePlayerHigh() {
             async: true,
             url: '/save_high',
             data: {
-              score_points: score_points, 
+              score_points: score_points,
               score_percent: score_percent,
-              forID: passID, 
+              forID: passID,
               nickname: nickname,
               csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
             },
@@ -101,7 +101,7 @@ startGame = () => {
 getNewQuestion = () => {
     if (availableQuesionsIndexes.length === 0 || questionCounter >= passNq) {
 
-      var currentHigh = $.ajax({ type: "GET",   
+      var currentHigh = $.ajax({ type: "GET",
       url: passHighUrl,
       async: false,
       }).responseText;
@@ -140,11 +140,11 @@ getNewQuestion = () => {
     //concatenate the string to display the answers
     var divText = "";
     for (i=0; i<=passAnswers[questionIndex].length-1; i++) // loop to create the whole html structure of answers
-    { 
+    {
         divID = "divID" + i;
         var insideText = '<div class="choice-prefix">'+symbols[i]+'</div><div class="choice-text">'+passAnswers[questionIndex][i]+'</div>';
         divText = divText + '<div class="choice-container" onclick = "Check('+i+')" id="' + divID +'">'+insideText+'</div>';
-    } 
+    }
     document.getElementById("QA-container").innerHTML = divText; //render answers
 
     /*console.log("RANDOM = " + String(questionIndex));
@@ -162,8 +162,8 @@ getNewQuestion = () => {
   }
 };
 
-function Check(ID){   
-    if (whichCorrect == ID && acceptingAnswers == true) 
+function Check(ID){
+    if (whichCorrect == ID && acceptingAnswers == true)
     {
         timeoutClear();
         onTimesUpTimer();
@@ -228,7 +228,7 @@ function formatTime(time) {
 
   if (secondspart == 10) {
     secondspart = 0;
-    seconds = seconds +1; 
+    seconds = seconds +1;
   }
   //console.log(`${seconds}.${secondspart}`);
   return `${seconds}.${secondspart}`;

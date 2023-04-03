@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     {#<meta name="viewport" content="width=device-width, initial-scale=1.0" />#}
-    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=0.4" />
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=0.6" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
     <link href='https://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet'>
@@ -19,16 +19,16 @@
           <table class ="hightable">
             <thead>
               <tr>
-                <th >Ranking</th> 
+                <th >Ranking</th>
                 <th title="The topic of the quiz. Could be anything...">Topic</th>
                 <th title="Time limit for each and every question.">Timer</th>
-                <th title="Temper is so called 'temperature' GPT hyperparameter rescaled to range 0-100. Higher temper value makes GPT answers more random.">Temper</th> 
+                <th title="Temper is so called 'temperature' GPT hyperparameter rescaled to range 0-100. Higher temper value makes GPT answers more random.">Temper</th>
                 <th title="Amount of questions in the quiz.">Questions</th>
-                <th title="Answers to ane question.">Answers</th> 
-                <th title="% of answers which GPT marked as correct.">Score [%]</th> 
-                <th title="Score points = Score[%] &sdot; &#8730;Questions &sdot; &#8730;Answers">Score points</th> 
+                <th title="Answers to ane question.">Answers</th>
+                <th title="% of answers which GPT marked as correct.">Score [%]</th>
+                <th title="Score points = Score[%] &sdot; &#8730;Questions &sdot; &#8730;Answers">Score points</th>
                 <th title="Highscore by:">Player</th>
-                <th title="Take the quiz and an opportunity to reach a new highscore (if Highscore[%]<100%).">Play</th> 
+                <th title="Take the quiz and an opportunity to reach a new highscore (if Highscore[%]<100%).">Play</th>
               </tr>
             </thead>
             </tbody>
@@ -51,8 +51,8 @@
             </tbody>
           </table>
         <br></br>
-        <h3>      
-          <div class="pagination"> 
+        <h3>
+          <div class="pagination">
               <span>
                   {% if page_obj.has_previous %}
                       <a class="btnpg" href="?page=1">&lt;&lt;&lt;</a>

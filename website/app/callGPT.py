@@ -5,17 +5,17 @@ openai.api_key = OPENAI_API_KEY
 
 def callGPT (topic, n_q, n_a, temperature):
 	def generate_prompt():
-		return """Here is an exact example of a quiz consisting of 1 question (Q1) about animals. Question has 3 answers (A1, A2, A3):
+		return """This is an example of a quiz consisting of 1 question (Q1) about animals. This question has 3 answers (A1, A2, A3):
 		Q1: Which of these animals is a marsupial?
 		A1. Lion
 		A2. Grizzly Bear
 		A3. Kangaroo
 		Correct = A3. Kangaroo
 
-		Create similarly constructed quiz. Quiz should consist of {} questions. 
-		All of the questions should be about {}. Each question should have {} short answers.
+		Create similarly constructed quiz. Quiz should consist of {} questions.
+		All of the questions should be about {}. Each question should have {} short answers. Only one of the answers should be correct.
 		The whole quiz should always start with "Q1:".
-		In terms like (Q1:, A2., Correct = A3.) Only numbers should change. 
+		In terms like (Q1:, A2., Correct = A3.) Only numbers should change.
 		Now create the quiz.""".format(n_q, topic, n_a)
 
 	# def generate_prompt():
@@ -34,7 +34,7 @@ def callGPT (topic, n_q, n_a, temperature):
 		responseText=str(APImessage),
 		visible=False,
 		allOk=False)
-	
+
 	try: #to establish connection
 		response = openai.Completion.create(engine = "text-davinci-003", prompt=generate_prompt(), max_tokens=3500, temperature=temperature) #459 tokenów w prompcie, 4097 max
 		# print(response)
@@ -88,14 +88,14 @@ def callGPT (topic, n_q, n_a, temperature):
 					answersList.append(current)
 				answersAll.append(answersList)
 				answersSublistsLens.append(len(answersList))
-				
+
 				correct = re.split('^ *[Cc]orrect = [Aa](\d*) *[:/.;-] *.*', split2[-1]) #(\d) "get" the digit from a string.  Anything 0-inf times regexp = .*
-				correct = list(filter(None, correct)) 
+				correct = list(filter(None, correct))
 				corrects.append(correct)
-				
+
 			corrects = [item for sublist in corrects for item in sublist] #list of lists into list of strs (flattened list)
-			correctsAll = [int(i) for i in corrects] 
-		
+			correctsAll = [int(i) for i in corrects]
+
 		except: # when error in cutting the response occurs save the whole response text
 			return dict(
 				questions='',
@@ -109,7 +109,7 @@ def callGPT (topic, n_q, n_a, temperature):
 				responseText=response,
 				visible=False,
 				allOk=False)
-		
+
 		else: #when no except(ions) occurs, prepare the whole response dictionary
 			questionsAmount = len(questionsAll)
 			answersMode = max(set(answersSublistsLens), key=answersSublistsLens.count) #most frequent amount of answers on the list
