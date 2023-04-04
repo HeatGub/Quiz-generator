@@ -3,3 +3,4 @@
 /my_notes.txt
 /website/db.sqlite3
 /website/app/secret_file.py
+/website/website/settings.py

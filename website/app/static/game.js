@@ -237,7 +237,8 @@ function formatTime(time) {
 
 function calculateTimeFraction() {
   const rawTimeFraction = timeLeft / TIME_LIMIT;
-  document.getElementById("base-timer-path-remaining").style.stroke = "rgba(59, 167, 230," + (1-rawTimeFraction*0.9).toString(); //remaining timer's color
+  document.getElementById("base-timer-path-remaining").style.stroke = "rgba(59, 167, 230," + (0.95-rawTimeFraction*0.3).toString(); //0.65 - 0.95
+  document.getElementById("base-timer-path-remaining").style.filter =  "drop-shadow( 0px 0px 1px rgba(250, 250, 250, " + (0.9-rawTimeFraction*0.9).toString(); + "))";
   return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
 }
 

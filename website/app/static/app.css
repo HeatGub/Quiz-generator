@@ -12,8 +12,7 @@
 
 /*make background stretched, not repeating (mobile devices problem)*/
 body {
-  /*background: linear-gradient(90deg, rgb(217, 13, 64), rgb(203, 98, 82), rgb(94, 11, 94));*/
-  background: linear-gradient(90deg, rgb(204, 15, 62), rgb(203, 98, 82), rgb(94, 11, 94));
+  background: linear-gradient(90deg, rgb(217, 13, 64), rgb(203, 98, 82), rgb(94, 11, 94));
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
