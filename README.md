@@ -1,17 +1,18 @@
-# Quiz generator (django + AJAX + GPTchat)
+# Quiz generator (Django + AJAX + GPTchat API)
 ## Overview
-- Backend - django, AJAX and GPTchat API to generate quizes
+  - Backend - django, AJAX and GPTchat API to generate quizes
   - relational DB
-  - asynchronous reading and saving of the highscore value 
+  - asynchronous loading and saving of the highscore value
   - extended admin page with nested lists
 
 - Frontend - HTML, CSS, vanilla JS
-  - works quite well on lower resolution devices
 
 You can find it hosted at https://quizgenerator.pythonanywhere.com/. 
 Git version does not contain personal keys needed to run the website locally.
 
-Warning: Because my harddrive suddenly broke, I lost the credentials to OPENAI account, therefore my API key might expire soon. If so, you'll see a message to try again later and won't be able to generate a quiz. Good news is that you may always choose already generated quiz from the highscores instead.
+## Warning
+- #### My API key has already expired, therefore quiz generating is not currently available. You will see "GPT response error" after generation attempt. 
+- #### You can still choose a quiz to play from the highscores list: https://quizgenerator.pythonanywhere.com/highscores
 
 ## Generate
 Generate a quiz based on form input values (topic, time limit, GPT temperature, amounts of questions and answers)
